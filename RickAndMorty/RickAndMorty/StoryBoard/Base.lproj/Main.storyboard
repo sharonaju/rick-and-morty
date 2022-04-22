@@ -16,13 +16,28 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MiQ-n4-vQk">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MiQ-n4-vQk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ng8-tB-OYr"/>
+                            <constraint firstItem="MiQ-n4-vQk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xq4-VO-Ss1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MiQ-n4-vQk" secondAttribute="trailing" id="Zu8-rI-vHF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MiQ-n4-vQk" secondAttribute="bottom" id="xkI-rv-WUs"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="MiQ-n4-vQk" id="gPn-wK-rua"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="98"/>
+            <point key="canvasLocation" x="-349" y="123"/>
         </scene>
     </scenes>
     <resources>

@@ -7,23 +7,44 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
-
+class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    // MARK: IBOutlets
+    @IBOutlet var tableView: UITableView!
+    
+    // MARK: Properties
+    
+    //MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        logAllAvailableFonts()
+        prepareTableView()
+    }
+    /// Logs all available fonts from iOS SDK and installed custom font
+   func logAllAvailableFonts() {
+       for family in UIFont.familyNames {
+       print("\(family)")
+       for name in UIFont.fontNames(forFamilyName: family) {
+           print("   \(name)")
+       }
+        }
+    }
+    //MARK: Custom Methods
+    func prepareTableView()  {
+        
+    }
+    // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
-    */
-
 }
