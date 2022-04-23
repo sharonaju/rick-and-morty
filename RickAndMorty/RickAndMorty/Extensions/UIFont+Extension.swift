@@ -9,27 +9,38 @@ import UIKit
 
 struct AppFont {
     enum FontStyle: String {
-        case bold             = "Helvetica-Bold"
-        case light            = "Helvetica-Light"
-        case regular          = "Helvetica"
+        case bold             = "bold"
+        case light            = "light"
+        case regular          = "regular"
+        
+        var font: String {
+            switch self {
+            case .bold:
+                return "Helvetica-Bold"
+            case .light:
+                return "Helvetica-Light"
+            case .regular:
+                return "Helvetica"
+            }
+        }
     }
    
-    var fontName: FontStyle
+    var fontStyle: FontStyle
     var size: CGFloat
 
-    init(fontName: FontStyle, size: CGFloat) {
-        self.fontName = fontName
+    init(fontStyle: FontStyle, size: CGFloat) {
+        self.fontStyle = fontStyle
         self.size = size
     }
     
     static func fontForFontName(font: FontStyle, fontSize: CGFloat?) -> UIFont {
-        return AppFont(fontName: font, size: fontSize ?? 14).instance
+        return AppFont(fontStyle: font, size: fontSize ?? 14).instance
     }
     
     var instance: UIFont {
         var instanceFont: UIFont!
-        guard let font = UIFont(name: fontName.rawValue, size: size) else {
-            fatalError("\(fontName.rawValue) font is not installed, make sure it added in Info.plist and logged with Utility.logAllAvailableFonts()")
+        guard let font = UIFont(name: fontStyle.font, size: size) else {
+            fatalError("\(fontStyle.rawValue) font is not installed, make sure it added in Info.plist and logged with Utility.logAllAvailableFonts()")
         }
         instanceFont = font
         return instanceFont

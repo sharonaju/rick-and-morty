@@ -51,7 +51,6 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyBoard.instantiateViewController(withIdentifier: "CharacterDetailViewController") as? CharacterDetailViewController {
             vc.viewModel.character = character
-//            self.navigationController?.present(vc, animated: true)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
