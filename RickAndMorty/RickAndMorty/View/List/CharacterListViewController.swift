@@ -46,6 +46,15 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
+    
+    func openCharacterDetail(character: Character?) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyBoard.instantiateViewController(withIdentifier: "CharacterDetailViewController") as? CharacterDetailViewController {
+            vc.viewModel.character = character
+//            self.navigationController?.present(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.count
@@ -59,5 +68,13 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem = model[indexPath.row]
+        if let characterID = selectedItem.id {
+            let selectedCharacter = viewModel.getTheSelectedCharacterDetail(id: characterID)
+            openCharacterDetail(character: selectedCharacter)
+        }
     }
 }

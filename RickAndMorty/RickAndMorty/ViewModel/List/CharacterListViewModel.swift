@@ -9,11 +9,14 @@ import UIKit
 
 class CharacterListViewModel: NSObject {
 
+    var characters: [Character]?
+    
     func fetchCharacters(completion: @escaping (Result<[CharacterListModel], ErrorInfo>)->()) {
         API.shared.fetchCharacters { result in
             switch result {
             case .success(let data):
                 if let characters = data.results{
+                    self.characters = characters
                     var characterList = [CharacterListModel]()
                     for character in characters {
                         let listModel = self.getCharacterListModelFromCharacters(character: character)
@@ -36,11 +39,16 @@ class CharacterListViewModel: NSObject {
         let name = character.name
         var episodes = ""
         if let numberOfEpisodes = character.episode?.count, numberOfEpisodes > 0 {
-            episodes = "\(numberOfEpisodes) Episodes"
+            episodes =  numberOfEpisodes > 1 ? "\(numberOfEpisodes) Episodes" : "\(numberOfEpisodes) Episode"
         }
         let imageURL = character.image
         let characterListModel = CharacterListModel(id: id, name: name, episodes: episodes, imageURL: imageURL)
         return characterListModel
+    }
+    
+    func getTheSelectedCharacterDetail(id: Int) -> Character? {
+        let selectedCharacter = self.characters?.filter{ $0.id == id }.first
+        return selectedCharacter
     }
     
 }
