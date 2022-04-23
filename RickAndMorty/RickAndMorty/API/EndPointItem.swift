@@ -20,7 +20,7 @@ extension EndPointItem: EndPointType{
     }
     
     var baseURL: String {
-        return "https://rickandmortyapi.com/"
+        return "https://rickandmortyapi.com/api/"
     }
     
     var path: String {

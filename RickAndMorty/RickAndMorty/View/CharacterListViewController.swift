@@ -1,5 +1,5 @@
 //
-//  ListViewController.swift
+//  CharacterListViewController.swift
 //  RickAndMorty
 //
 //  Created by Sharon Varghese on 22/04/2022.
@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CharacterListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: IBOutlets
     @IBOutlet var tableView: UITableView!
     
     // MARK: Properties
+    var viewModel = CharacterListViewModel()
+    var model = [CharacterListModel]()
     
     //MARK: UIViewController
     override func viewDidLoad() {
@@ -20,6 +22,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.\
         prepareUI()
         prepareTableView()
+        fetchData()
     }
 
     //MARK: Custom Methods
@@ -28,15 +31,28 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func prepareTableView()  {
-        tableView.register(UINib(nibName: ListTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: ListTableViewCell.reuseIdentifier)
+        tableView.register(UINib(nibName: CharacterListTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CharacterListTableViewCell.reuseIdentifier)
+        tableView.estimatedRowHeight = 150
     }
     
+    func fetchData() {
+        viewModel.fetchCharacters { result in
+            switch result {
+            case .success(let data):
+                self.model = data
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error.body ?? "")
+            }
+        }
+    }
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return model.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.reuseIdentifier, for: indexPath) as! ListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CharacterListTableViewCell.reuseIdentifier, for: indexPath) as! CharacterListTableViewCell
+        cell.data = model[indexPath.row]
         return cell
     }
     

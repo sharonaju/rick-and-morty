@@ -10,6 +10,7 @@ import Alamofire
 class APIManager: NSObject {
     
     private let sessionManager: Session
+    
     private static var sharedAPIManager: APIManager = {
         let apiManager = APIManager(sessionManager: Session())
         return apiManager
@@ -30,33 +31,18 @@ class APIManager: NSObject {
                                     headers: type.headers).validate().responseJSON(completionHandler: { (data) in
             switch data.result {
             case .success(_):
-                let decoder = JSONDecoder()
-                let errorInfo = self.parseApiError(data: data.data)
-                if errorInfo != nil
-                {
-                    if let error = errorInfo
-                    {
+                if let data = data.data {
+                    do {
+                        let result = try JSONDecoder().decode(T.self, from: data)
+                        handler(.success(result))
+                    } catch let error {
+                        let error = ErrorInfo(body: error.localizedDescription)
                         handler(.failure(error))
                     }
+                } else {
+                    let error = ErrorInfo(body: "Something went wrong")
+                    handler(.failure(error))
                 }
-                else
-                {
-                    if let jsonData = data.data
-                    {
-                        do
-                        {
-                            let result = try decoder.decode(T.self, from: jsonData)
-                            handler(.success(result))
-                        }
-                        catch
-                        {
-                            let errorInfo = ErrorInfo(body: error.localizedDescription)
-                            print(errorInfo)
-                            handler(.failure(errorInfo))
-                        }
-                    }
-                }
-                
                 break
             case .failure(let error):
                 if let errorInfo = (self.parseApiError(data: data.data, error: error, endPoint: type)) {
@@ -65,7 +51,6 @@ class APIManager: NSObject {
                     let errorInfo = ErrorInfo( body: "Something went wrong")
                     handler(.failure(errorInfo))
                 }
-                
                 break
             }
         })
