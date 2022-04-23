@@ -10,6 +10,7 @@ import UIKit
 class CharacterListViewModel: NSObject {
 
     var characters: [Character]?
+    var characterListModels: [CharacterListModel]?
     
     func fetchCharacters(completion: @escaping (Result<[CharacterListModel], ErrorInfo>)->()) {
         API.shared.fetchCharacters { result in
@@ -22,6 +23,7 @@ class CharacterListViewModel: NSObject {
                         let listModel = self.getCharacterListModelFromCharacters(character: character)
                         characterList.append(listModel)
                     }
+                    self.characterListModels = characterList
                     completion(.success(characterList))
                 } else {
                     let listEmptyError = ErrorInfo(body: "Empty List")
@@ -51,4 +53,20 @@ class CharacterListViewModel: NSObject {
         return selectedCharacter
     }
     
+    func filterCharactersBasedOnName(filterText: String?) -> [CharacterListModel]? {
+        guard let filterText = filterText else {
+            return self.characterListModels
+        }
+        if isSearchTextEmpty(text: filterText) {
+            return self.characterListModels
+        }
+        let filteredArray = self.characterListModels?.filter {
+            $0.name?.contains(filterText) == true
+        }
+        return filteredArray
+    }
+    
+    private func isSearchTextEmpty(text: String) -> Bool {
+        return text.trimmingCharacters(in: .whitespaces).isEmpty
+    }
 }
