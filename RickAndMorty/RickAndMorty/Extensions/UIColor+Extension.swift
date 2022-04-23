@@ -38,37 +38,43 @@ extension UIColor {
 
 
 enum AppColor {
-    case black
-    case lightGrey
-    case darkGrey
+    case primaryBackgroundColor
+    case secondaryBackgroundColor
+    case primaryTextColor
+    case secondaryTextColor
     var value: UIColor{
         switch self {
-        case .black:
+        case .primaryBackgroundColor:
             return UIColor.init(hex: "#25282E") ?? .clear
-        case .lightGrey:
+        case .secondaryBackgroundColor:
             return UIColor.init(hex: "#9E9E9E") ?? .clear
-        case .darkGrey:
+        case .primaryTextColor:
+            return UIColor.init(hex: "#FFFFFF") ?? .clear
+        case .secondaryTextColor:
             return UIColor.init(hex: "#3C3D42") ?? .clear
         }
     }
     
     enum ColorCode: String {
-        case black
-        case lightGrey
-        case darkGrey
+        case primaryBackgroundColor
+        case secondaryBackgroundColor
+        case primaryTextColor
+        case secondaryTextColor
         static func build(rawValue: String) -> ColorCode {
-            return ColorCode(rawValue: rawValue) ?? .black
+            return ColorCode(rawValue: rawValue) ?? .primaryBackgroundColor
         }
     }
     
     static func colorForCode(_ code: ColorCode, customColor: UIColor?) -> UIColor {
         switch code {
-        case .black:
-            return AppColor.black.value
-        case .lightGrey:
-            return AppColor.lightGrey.value
-        case .darkGrey:
-            return AppColor.darkGrey.value
+        case .primaryBackgroundColor:
+            return AppColor.primaryBackgroundColor.value
+        case .secondaryBackgroundColor:
+            return AppColor.secondaryBackgroundColor.value
+        case .primaryTextColor:
+            return AppColor.primaryTextColor.value
+        case .secondaryTextColor:
+            return AppColor.secondaryTextColor.value
         }
     }
 }
