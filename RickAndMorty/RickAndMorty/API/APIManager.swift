@@ -7,6 +7,7 @@
 
 
 import Alamofire
+
 class APIManager: NSObject {
     
     private let sessionManager: Session

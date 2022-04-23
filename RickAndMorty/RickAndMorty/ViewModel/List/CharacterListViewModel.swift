@@ -8,16 +8,21 @@
 import UIKit
 
 class CharacterListViewModel: NSObject {
-
+    
     var characters: [Character]?
     var characterListModels: [CharacterListModel]?
+    private let numberOfCharactersToBeDisplayed = 20
     
     func fetchCharacters(completion: @escaping (Result<[CharacterListModel], ErrorInfo>)->()) {
+        if isNetworkConnected() == false {
+            let error = ErrorInfo( body: "Please check your internet connection")
+            completion(.failure(error))
+        }
         API.shared.fetchCharacters { result in
             switch result {
             case .success(let data):
                 if let characters = data.results{
-                    self.characters = characters
+                    self.characters = self.sliceArray(allCharacters: characters)
                     var characterList = [CharacterListModel]()
                     for character in characters {
                         let listModel = self.getCharacterListModelFromCharacters(character: character)
@@ -34,6 +39,15 @@ class CharacterListViewModel: NSObject {
             }
         }
         
+    }
+    
+    private func isNetworkConnected() -> Bool{
+        return NetworkMonitor.shared.isConnected
+    }
+    
+    private func sliceArray(allCharacters: [Character]) -> [Character] {
+        let slicedArray = Array(allCharacters.prefix(numberOfCharactersToBeDisplayed))
+        return slicedArray
     }
     
     private func getCharacterListModelFromCharacters(character: Character) -> CharacterListModel{

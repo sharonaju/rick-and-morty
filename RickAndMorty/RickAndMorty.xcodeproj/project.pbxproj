@@ -34,6 +34,7 @@
 		23BB0D8C281424550051DC74 /* CharacterImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23BB0D8A281424550051DC74 /* CharacterImageTableViewCell.xib */; };
 		23BB0D902814282A0051DC74 /* CharacterInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB0D8E2814282A0051DC74 /* CharacterInfoTableViewCell.swift */; };
 		23BB0D912814282A0051DC74 /* CharacterInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23BB0D8F2814282A0051DC74 /* CharacterInfoTableViewCell.xib */; };
+		23BB0D94281473A80051DC74 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB0D93281473A80051DC74 /* NetworkMonitor.swift */; };
 		DC138D3E5FBDD8317AE3A683 /* Pods_RickAndMorty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A01361D3EEB544CB10875E8 /* Pods_RickAndMorty.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		23BB0D8A281424550051DC74 /* CharacterImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterImageTableViewCell.xib; sourceTree = "<group>"; };
 		23BB0D8E2814282A0051DC74 /* CharacterInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoTableViewCell.swift; sourceTree = "<group>"; };
 		23BB0D8F2814282A0051DC74 /* CharacterInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterInfoTableViewCell.xib; sourceTree = "<group>"; };
+		23BB0D93281473A80051DC74 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		2FEE61D34DABC8CEEE352E93 /* Pods-RickAndMorty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMorty.release.xcconfig"; path = "Target Support Files/Pods-RickAndMorty/Pods-RickAndMorty.release.xcconfig"; sourceTree = "<group>"; };
 		891963C008DC73AC1FC10B4F /* Pods-RickAndMorty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMorty.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMorty/Pods-RickAndMorty.debug.xcconfig"; sourceTree = "<group>"; };
 		9A01361D3EEB544CB10875E8 /* Pods_RickAndMorty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickAndMorty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 		23BB0D392812A6830051DC74 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				23BB0D922814738D0051DC74 /* Network */,
 				23BB0D6F2813D0C50051DC74 /* Entities */,
 				23BB0D642813202F0051DC74 /* Extensions */,
 				23BB0D6128131E9D0051DC74 /* UIComponents */,
@@ -257,6 +260,14 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
+		23BB0D922814738D0051DC74 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				23BB0D93281473A80051DC74 /* NetworkMonitor.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		6A34EEBA09A4D76F2BB045A9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +414,7 @@
 				23BB0D762813E12C0051DC74 /* SceneDelegate.swift in Sources */,
 				23BB0D662813206D0051DC74 /* UIColor+Extension.swift in Sources */,
 				23BB0D782813E2510051DC74 /* CharacterListModel.swift in Sources */,
+				23BB0D94281473A80051DC74 /* NetworkMonitor.swift in Sources */,
 				23BB0D882814105B0051DC74 /* CharacterDetailIModel.swift in Sources */,
 				23BB0D3B2812A6830051DC74 /* AppDelegate.swift in Sources */,
 				23BB0D6E2813D04C0051DC74 /* API.swift in Sources */,
@@ -566,7 +578,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -578,7 +590,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -596,7 +608,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -608,7 +620,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

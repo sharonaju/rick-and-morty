@@ -43,6 +43,13 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
         self.navigationItem.titleView = searchBar
     }
     
+    func showAlert(title: String?, message: String? ) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
     func fetchData() {
         viewModel.fetchCharacters { result in
             switch result {
@@ -62,6 +69,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listItems?.count ?? 0
