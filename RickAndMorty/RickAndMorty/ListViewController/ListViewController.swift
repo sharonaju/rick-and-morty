@@ -17,30 +17,27 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        logAllAvailableFonts()
+        // Do any additional setup after loading the view.\
+        prepareUI()
         prepareTableView()
     }
-    /// Logs all available fonts from iOS SDK and installed custom font
-   func logAllAvailableFonts() {
-       for family in UIFont.familyNames {
-       print("\(family)")
-       for name in UIFont.fontNames(forFamilyName: family) {
-           print("   \(name)")
-       }
-        }
-    }
+
     //MARK: Custom Methods
-    func prepareTableView()  {
-        
+    func prepareUI() {
+        self.view.backgroundColor = AppColor.primaryBackgroundColor.value
     }
-    // MARK: - UITableViewDataSource
     
+    func prepareTableView()  {
+        tableView.register(UINib(nibName: ListTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: ListTableViewCell.reuseIdentifier)
+    }
+    
+    // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.reuseIdentifier, for: indexPath) as! ListTableViewCell
+        return cell
     }
     
     // MARK: - UITableViewDelegate

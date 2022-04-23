@@ -33,7 +33,7 @@ class BaseLabel: UILabel {
     }
 
     func setFontStyle() {
-        let code = AppFont.FontStyle.build(rawValue: textFontStyle)
-        font = AppFont.fontForStyleCode(code: code, fontSize: fontSize)
+        let code = AppFont.FontStyle(rawValue: textFontStyle) ?? .regular
+        font = AppFont.fontForFontName(font: code, fontSize: fontSize)
     }
 }
