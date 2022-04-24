@@ -83,4 +83,11 @@ class CharacterListViewModel: NSObject {
     private func isSearchTextEmpty(text: String) -> Bool {
         return text.trimmingCharacters(in: .whitespaces).isEmpty
     }
+    
+    func shouldShowEmptyDataView(listItems: [CharacterListModel]?) -> Bool {
+        if let listItems = listItems, listItems.count > 0 {
+            return false
+        }
+        return true
+    }
 }

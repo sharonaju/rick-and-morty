@@ -40,4 +40,5 @@ class CharacterDetailViewModel: NSObject {
         let characterDetailCellModel = CharacterDetailInfoCellModel(title: infoTitle, value: info)
         return characterDetailCellModel
     }
+  
 }

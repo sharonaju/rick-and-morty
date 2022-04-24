@@ -10,6 +10,8 @@ import UIKit
 class CharacterListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     // MARK: IBOutlets
+    @IBOutlet var emptyView: UIView!
+    @IBOutlet var emptyLabel: BaseLabel!
     @IBOutlet var tableView: UITableView!
     
     // MARK: Properties
@@ -40,6 +42,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     func setupSearchBar()  {
         let searchBar = UISearchBar()
         searchBar.delegate = self
+        searchBar.placeholder = "Search character"
         self.navigationItem.titleView = searchBar
     }
     
@@ -50,6 +53,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
+    
     func fetchData() {
         viewModel.fetchCharacters { result in
             switch result {
@@ -57,7 +61,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
                 self.listItems = data
                 self.tableView.reloadData()
             case .failure(let error):
-                print(error.body ?? "")
+                self.showAlert(title: error.title, message: error.body)
             }
         }
     }
@@ -68,6 +72,15 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
             vc.viewModel.character = character
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func showEmptyView(searchText: String) {
+        emptyLabel.text = "No search result for \"\(searchText)\""
+        emptyView.isHidden = false
+    }
+    
+    func hideEmptyView() {
+        emptyView.isHidden = true
     }
     
     // MARK: - UITableViewDataSource
@@ -86,6 +99,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         let selectedItem = listItems?[indexPath.row]
         if let characterID = selectedItem?.id {
             let selectedCharacter = viewModel.getTheSelectedCharacterDetail(id: characterID)
@@ -96,11 +110,13 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: UISearchBarDelegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         listItems = viewModel.filterCharactersBasedOnName(filterText: searchText)
+        viewModel.shouldShowEmptyDataView(listItems: listItems) ? showEmptyView(searchText: searchText) : hideEmptyView()
         tableView.reloadData()
     }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+   
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
+    
 
 }
