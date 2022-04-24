@@ -15,7 +15,7 @@ class CharacterListViewModel: NSObject {
     private let numberOfCharactersToBeDisplayed = 20
     
     //MARK: Validations
-    private func isSearchTextEmpty(text: String) -> Bool {
+    func isSearchTextEmpty(text: String) -> Bool {
         return text.trimmingCharacters(in: .whitespaces).isEmpty
     }
     
