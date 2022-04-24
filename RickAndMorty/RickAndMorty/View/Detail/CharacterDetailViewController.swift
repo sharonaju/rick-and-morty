@@ -28,6 +28,7 @@ class CharacterDetailViewController: UIViewController, UITableViewDelegate, UITa
     func setupUI() {
         self.title = viewModel.character?.name
         self.view.backgroundColor = AppColor.primaryBackgroundColor.value
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     
     func prepareTableView() {

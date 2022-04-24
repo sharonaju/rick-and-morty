@@ -31,6 +31,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
 
     //MARK: Custom Methods
     func prepareUI() {
+        self.title = "Rick and Morty"
         self.view.backgroundColor = AppColor.primaryBackgroundColor.value
     }
     
