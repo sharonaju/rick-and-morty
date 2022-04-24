@@ -7,6 +7,7 @@
 
 
 import Alamofire
+
 class APIManager: NSObject {
     
     private let sessionManager: Session
@@ -24,36 +25,31 @@ class APIManager: NSObject {
     }
     
     func call<T>(type: EndPointType, params: Parameters? = nil, handler: @escaping (Swift.Result<T, ErrorInfo>) -> Void) where T: Codable {
+        
         self.sessionManager.request(type.url,
                                     method: type.httpMethod,
                                     parameters: params,
                                     encoding: type.encoding,
-                                    headers: type.headers).validate().responseJSON(completionHandler: { (data) in
-            switch data.result {
-            case .success(_):
-                if let data = data.data {
-                    do {
-                        let result = try JSONDecoder().decode(T.self, from: data)
-                        handler(.success(result))
-                    } catch let error {
-                        let error = ErrorInfo(body: error.localizedDescription)
-                        handler(.failure(error))
-                    }
-                } else {
-                    let error = ErrorInfo(body: "Something went wrong")
-                    handler(.failure(error))
+                                    headers: type.headers).validate().responseData(completionHandler: { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let result = try JSONDecoder().decode(T.self, from: data)
+                    handler(.success(result))
+                } catch {
+                    
                 }
-                break
             case .failure(let error):
-                if let errorInfo = (self.parseApiError(data: data.data, error: error, endPoint: type)) {
+                if let errorInfo = (self.parseApiError(data: response.data, error: error, endPoint: type)) {
                     handler(.failure(errorInfo))
                 } else {
                     let errorInfo = ErrorInfo( body: "Something went wrong")
                     handler(.failure(errorInfo))
                 }
-                break
             }
+            
         })
+        
     }
 
     private func parseApiError(data: Data?, error: AFError? = nil, endPoint: EndPointType? = nil) -> ErrorInfo? {
