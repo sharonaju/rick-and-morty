@@ -11,6 +11,8 @@
 		237F0AD42815B2A8005050B4 /* CharacterDetailModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F0AD32815B2A8005050B4 /* CharacterDetailModelTest.swift */; };
 		237F0AD82815B79F005050B4 /* CharacterListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F0AD72815B79F005050B4 /* CharacterListViewModelTests.swift */; };
 		237F0ADA2815BEB7005050B4 /* CharacterDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F0AD92815BEB7005050B4 /* CharacterDetailViewModelTests.swift */; };
+		237F0ADE2815CFC6005050B4 /* MockCharacterResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 237F0ADD2815CFC6005050B4 /* MockCharacterResponse.json */; };
+		237F0AE02815D043005050B4 /* CharacterResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F0ADF2815D043005050B4 /* CharacterResponseTests.swift */; };
 		23BB0D3B2812A6830051DC74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB0D3A2812A6830051DC74 /* AppDelegate.swift */; };
 		23BB0D422812A6830051DC74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23BB0D402812A6830051DC74 /* Main.storyboard */; };
 		23BB0D442812A6840051DC74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23BB0D432812A6840051DC74 /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		237F0AD32815B2A8005050B4 /* CharacterDetailModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailModelTest.swift; sourceTree = "<group>"; };
 		237F0AD72815B79F005050B4 /* CharacterListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelTests.swift; sourceTree = "<group>"; };
 		237F0AD92815BEB7005050B4 /* CharacterDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelTests.swift; sourceTree = "<group>"; };
+		237F0ADD2815CFC6005050B4 /* MockCharacterResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockCharacterResponse.json; sourceTree = "<group>"; };
+		237F0ADF2815D043005050B4 /* CharacterResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponseTests.swift; sourceTree = "<group>"; };
 		23BB0D372812A6830051DC74 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23BB0D3A2812A6830051DC74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23BB0D412812A6830051DC74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 		237F0AC928156DC4005050B4 /* RickAndMortyTests */ = {
 			isa = PBXGroup;
 			children = (
+				237F0ADB2815CE7E005050B4 /* APITests */,
 				237F0AD62815B764005050B4 /* ViewModelTests */,
 				237F0AD52815B364005050B4 /* ModelTests */,
 			);
@@ -137,6 +142,15 @@
 				237F0AD92815BEB7005050B4 /* CharacterDetailViewModelTests.swift */,
 			);
 			path = ViewModelTests;
+			sourceTree = "<group>";
+		};
+		237F0ADB2815CE7E005050B4 /* APITests */ = {
+			isa = PBXGroup;
+			children = (
+				237F0ADD2815CFC6005050B4 /* MockCharacterResponse.json */,
+				237F0ADF2815D043005050B4 /* CharacterResponseTests.swift */,
+			);
+			path = APITests;
 			sourceTree = "<group>";
 		};
 		23BB0D2E2812A6820051DC74 = {
@@ -424,6 +438,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237F0ADE2815CFC6005050B4 /* MockCharacterResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +506,7 @@
 			files = (
 				237F0AD42815B2A8005050B4 /* CharacterDetailModelTest.swift in Sources */,
 				237F0ADA2815BEB7005050B4 /* CharacterDetailViewModelTests.swift in Sources */,
+				237F0AE02815D043005050B4 /* CharacterResponseTests.swift in Sources */,
 				237F0AD228156E68005050B4 /* CharacterListModelTest.swift in Sources */,
 				237F0AD82815B79F005050B4 /* CharacterListViewModelTests.swift in Sources */,
 			);
