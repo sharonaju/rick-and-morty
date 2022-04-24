@@ -9,9 +9,25 @@ import UIKit
 
 class CharacterListViewModel: NSObject {
     
+    //MARK: Properties
     var characters: [Character]?
     var characterListModels: [CharacterListModel]?
     private let numberOfCharactersToBeDisplayed = 20
+    
+    //MARK: Validations
+    private func isSearchTextEmpty(text: String) -> Bool {
+        return text.trimmingCharacters(in: .whitespaces).isEmpty
+    }
+    
+    func shouldShowEmptyDataView(listItems: [CharacterListModel]?) -> Bool {
+        if let listItems = listItems, listItems.count > 0 {
+            return false
+        }
+        return true
+    }
+    private func isNetworkConnected() -> Bool{
+        return NetworkMonitor.shared.isConnected
+    }
     
     func fetchCharacters(completion: @escaping (Result<[CharacterListModel], ErrorInfo>)->()) {
         if isNetworkConnected() == false {
@@ -40,11 +56,7 @@ class CharacterListViewModel: NSObject {
         }
         
     }
-    
-    private func isNetworkConnected() -> Bool{
-        return NetworkMonitor.shared.isConnected
-    }
-    
+
     private func sliceArray(allCharacters: [Character]) -> [Character] {
         let slicedArray = Array(allCharacters.prefix(numberOfCharactersToBeDisplayed))
         return slicedArray
@@ -78,16 +90,5 @@ class CharacterListViewModel: NSObject {
             $0.name?.contains(filterText) == true
         }
         return filteredArray
-    }
-    
-    private func isSearchTextEmpty(text: String) -> Bool {
-        return text.trimmingCharacters(in: .whitespaces).isEmpty
-    }
-    
-    func shouldShowEmptyDataView(listItems: [CharacterListModel]?) -> Bool {
-        if let listItems = listItems, listItems.count > 0 {
-            return false
-        }
-        return true
-    }
+    }    
 }

@@ -25,51 +25,12 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="njj-Wk-kOm"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jE-x2-05F">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LdD-aq-yKO">
-                                        <rect key="frame" x="132" y="268" width="150" height="186.5"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search" translatesAutoresizingMaskIntoConstraints="NO" id="NRQ-OF-Hq9">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="9c7-ku-w38"/>
-                                                    <constraint firstAttribute="width" secondItem="NRQ-OF-Hq9" secondAttribute="height" multiplier="1:1" id="9cw-d6-O4H"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WnU-MY-Mve" customClass="BaseLabel" customModule="RickAndMorty" customModuleProvider="target">
-                                                <rect key="frame" x="54.5" y="166" width="41.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="textColorCode" value="secondaryTextColor"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="textFontStyle" value="regular"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                                        <real key="value" value="16"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="LdD-aq-yKO" firstAttribute="centerX" secondItem="2jE-x2-05F" secondAttribute="centerX" id="Joo-Ku-Y57"/>
-                                    <constraint firstItem="LdD-aq-yKO" firstAttribute="centerY" secondItem="2jE-x2-05F" secondAttribute="centerY" id="S0t-xo-B7C"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2jE-x2-05F" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0Lt-Bb-4Y2"/>
                             <constraint firstItem="MiQ-n4-vQk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Ng8-tB-OYr"/>
-                            <constraint firstItem="2jE-x2-05F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Nku-Lb-13s"/>
-                            <constraint firstItem="2jE-x2-05F" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="XKY-Q9-goz"/>
                             <constraint firstItem="MiQ-n4-vQk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xq4-VO-Ss1"/>
-                            <constraint firstItem="2jE-x2-05F" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Zbv-kR-aTB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MiQ-n4-vQk" secondAttribute="trailing" id="Zu8-rI-vHF"/>
                             <constraint firstAttribute="bottom" secondItem="MiQ-n4-vQk" secondAttribute="bottom" id="xkI-rv-WUs"/>
                         </constraints>
@@ -82,6 +43,43 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="2jE-x2-05F">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LdD-aq-yKO">
+                            <rect key="frame" x="132" y="268" width="150" height="186.5"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search" translatesAutoresizingMaskIntoConstraints="NO" id="NRQ-OF-Hq9">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="150" id="9c7-ku-w38"/>
+                                        <constraint firstAttribute="width" secondItem="NRQ-OF-Hq9" secondAttribute="height" multiplier="1:1" id="9cw-d6-O4H"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WnU-MY-Mve" customClass="BaseLabel" customModule="RickAndMorty" customModuleProvider="target">
+                                    <rect key="frame" x="54.5" y="166" width="41.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="textColorCode" value="secondaryTextColor"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="textFontStyle" value="regular"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                            <real key="value" value="16"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="uOT-6n-Fc9"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="LdD-aq-yKO" firstAttribute="centerX" secondItem="2jE-x2-05F" secondAttribute="centerX" id="Joo-Ku-Y57"/>
+                        <constraint firstItem="LdD-aq-yKO" firstAttribute="centerY" secondItem="2jE-x2-05F" secondAttribute="centerY" id="S0t-xo-B7C"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="305.79710144927537" y="124.55357142857142"/>
         </scene>

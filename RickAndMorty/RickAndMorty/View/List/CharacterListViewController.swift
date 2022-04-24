@@ -77,11 +77,12 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     
     func showEmptyView(searchText: String) {
         emptyLabel.text = "No search result for \"\(searchText)\""
-        emptyView.isHidden = false
+        tableView.backgroundView = emptyView
     }
     
     func hideEmptyView() {
         emptyView.isHidden = true
+        tableView.backgroundView = nil
     }
     
     // MARK: - UITableViewDataSource
@@ -118,6 +119,4 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-    
-
 }

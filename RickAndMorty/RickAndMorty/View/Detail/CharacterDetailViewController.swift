@@ -8,6 +8,7 @@
 import UIKit
 
 class CharacterDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
 // MARK: IBOutlets
     @IBOutlet var tableView: UITableView!
     

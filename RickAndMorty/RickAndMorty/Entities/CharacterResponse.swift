@@ -20,7 +20,7 @@ struct Info: Codable {
     let next: String?
 }
 
-// MARK: - Result
+// MARK: - Character
 struct Character: Codable {
     let id: Int?
     let name: String?
@@ -29,7 +29,10 @@ struct Character: Codable {
     let status: Status?
     let species: Species?
     let gender: Gender?
-    let location: Location?
+    let origin, location: Location?
+    let type: String?
+    let url: String?
+    let created: String?
 }
 
 enum Gender: String, Codable {
