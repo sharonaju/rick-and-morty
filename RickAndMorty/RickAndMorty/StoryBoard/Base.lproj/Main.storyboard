@@ -43,7 +43,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="2jE-x2-05F">
+                <view hidden="YES" contentMode="scaleToFill" id="2jE-x2-05F">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>

@@ -38,6 +38,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     func prepareTableView()  {
         tableView.register(UINib(nibName: CharacterListTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CharacterListTableViewCell.reuseIdentifier)
         tableView.estimatedRowHeight = 150
+        tableView.backgroundView = emptyView
     }
     
     func setupSearchBar()  {
@@ -77,12 +78,11 @@ class CharacterListViewController: UIViewController, UITableViewDelegate, UITabl
     
     func showEmptyView(searchText: String) {
         emptyLabel.text = "No search result for \"\(searchText)\""
-        tableView.backgroundView = emptyView
+        emptyView.isHidden = false
     }
     
     func hideEmptyView() {
         emptyView.isHidden = true
-        tableView.backgroundView = nil
     }
     
     // MARK: - UITableViewDataSource
